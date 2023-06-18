@@ -17,7 +17,10 @@ const NoticiasProvider = ({ children }) => {
 
         const consultarAPI = async () => {
 
-            const url = `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&with_genres=${categoria}&page=100`;
+            const url = `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&with_genres=${categoria}&language=es`;
+
+            // const url = 'https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&sort_by=release_date.desc&with_genres=${categoria}&page=1&language=es'
+
 
             const { data } = await axios(url)
 
@@ -28,8 +31,6 @@ const NoticiasProvider = ({ children }) => {
         consultarAPI()
 
     }, [categoria])
-
-
 
     return (
         <NoticiasContext.Provider

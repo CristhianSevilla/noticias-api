@@ -9,19 +9,9 @@ const ListadoNoticias = () => {
 
     return (
         <>
-            <Typography
-                textAlign={'center'}
-                marginY={5}
-                variant="h3"
-                component={'h2'}
-            >
-                Resultados
-            </Typography>
-
             <Grid
                 container
-                spacing={4}
-                height={'250'}
+                spacing={3}
                 alignItems="stretch"
             >
                 {
@@ -33,7 +23,6 @@ const ListadoNoticias = () => {
                     ))
                 }
             </Grid>
-
         </>
     )
 }

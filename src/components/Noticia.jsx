@@ -10,29 +10,39 @@ const Noticia = ({ noticia }) => {
 
     const { original_language, overview, poster_path, title, release_date, id } = noticia
     
+    function formatearFecha(fecha) {
+        const fechaFormateada = new Date(fecha).toLocaleDateString('es-ES', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+        });
+      
+        return fechaFormateada;
+      }
 
     return (
-        <Grid item sm={4} lg={3} >
-            <Card>
+        <Grid item xs={6} sm={4} lg={2} >
+            <Card sx={{  boxShadow: 'none', borderRadius: '0' }}>
                 {poster_path && (
                     <CardMedia
                         component='img'
                         alt={`Imagen de la pelicula ${title}`}
                         image={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                        height={'400'}
                     />
                 )}
-
-                <CardContent>
+       
+                <CardContent sx={{ backgroundColor: '#141a32', color: 'white' }}>
                     <Typography
-                        variant='body1'
+                        variant='body2'
                         color='error'
+                        fontWeight={700}
                     >
-                        {`Estreno: ${release_date}`}
+                        {`${formatearFecha(release_date)}`}
                     </Typography>
                     <Typography
-                        variant='h6'
+                        variant='body1'
                         component='div'
+                        fontWeight={700}
                     >
                         {title}
                     </Typography>
