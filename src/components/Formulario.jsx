@@ -3,18 +3,31 @@ import useNoticias from '../hooks/useNoticias'
 
 
 const CATEGORIAS = [
-    { value: 'general', label: 'General' },
-    { value: 'business', label: 'Negocios' },
-    { value: 'entertainment', label: 'Entretenimiento' },
-    { value: 'health', label: 'Salud' },
-    { value: 'science', label: 'Ciencia' },
-    { value: 'sports', label: 'Deportes' },
-    { value: 'technology', label: 'Tecnología' },
+
+    { id: 28, name: "Action" },
+    { id: 12, name: "Adventure" },
+    { id: 16, name: "Animation" },
+    { id: 35, name: "Comedy" },
+    { id: 80, name: "Crime" },
+    { id: 99, name: "Documentary" },
+    { id: 18, name: "Drama" },
+    { id: 10751, name: "Family" },
+    { id: 14, name: "Fantasy" },
+    { id: 36, name: "History" },
+    { id: 27, name: "Horror" },
+    { id: 10402, name: "Music" },
+    { id: 9648, name: "Mystery" },
+    { id: 10749, name: "Romance" },
+    { id: 878, name: "Science Fiction" },
+    { id: 10770, name: "TV Movie" },
+    { id: 53, name: "Thriller" },
+    { id: 10752, name: "War" },
+    { id: 37, name: "Western" }
 ]
 
 const Formulario = () => {
 
-    const { categoria, handleChangeCategoria} = useNoticias()
+    const { categoria, handleChangeCategoria } = useNoticias()
 
 
     return (
@@ -29,10 +42,10 @@ const Formulario = () => {
                     {
                         CATEGORIAS.map(categoria => (
                             <MenuItem
-                                key={categoria.value}
-                                value={categoria.value}
+                                key={categoria.id}
+                                value={categoria.id}
                             >
-                                {categoria.label}
+                                {categoria.name}
                             </MenuItem>
                         ))
                     }

@@ -5,7 +5,7 @@ const NoticiasContext = createContext()
 
 const NoticiasProvider = ({ children }) => {
 
-    const [categoria, setCategoria] = useState('general')
+    const [categoria, setCategoria] = useState(12)
     const [noticias, setNoticias] = useState([])
 
     const handleChangeCategoria = e => {
@@ -15,29 +15,28 @@ const NoticiasProvider = ({ children }) => {
     //Consumir API
     useEffect(() => {
 
-        try {
-            const consultarAPI = async () => {
-                const url = `https://newsapi.org/v2/top-headlines?country=mx&category=${categoria}&apikey=${import.meta.env.VITE_API_KEY}`
+        const consultarAPI = async () => {
 
-                const { data } = await axios(url)
+            const url = `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&with_genres=${categoria}&page=100`;
 
-                setNoticias(data.articles)
+            const { data } = await axios(url)
 
-            }
+            setNoticias(data.results)
 
-            consultarAPI()
-
-        } catch (error) {
-            console.log(error);
         }
 
+        consultarAPI()
 
     }, [categoria])
+
+
+
     return (
         <NoticiasContext.Provider
             value={{
                 categoria,
-                handleChangeCategoria
+                handleChangeCategoria,
+                noticias
 
             }}
         >
