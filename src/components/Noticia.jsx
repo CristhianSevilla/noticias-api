@@ -9,44 +9,49 @@ import Grid from '@mui/material/Grid'
 const Noticia = ({ noticia }) => {
 
     const { original_language, overview, poster_path, title, release_date, id } = noticia
-    
+
     function formatearFecha(fecha) {
         const fechaFormateada = new Date(fecha).toLocaleDateString('es-ES', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
         });
-      
+
         return fechaFormateada;
-      }
+    }
 
     return (
-        <Grid item xs={6} sm={4} lg={2} >
-            <Card sx={{  boxShadow: 'none', borderRadius: '0' }}>
-                {poster_path && (
-                    <CardMedia
-                        component='img'
-                        alt={`Imagen de la pelicula ${title}`}
-                        image={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                    />
-                )}
-       
-                <CardContent sx={{ backgroundColor: '#141a32', color: 'white' }}>
-                    <Typography
-                        variant='body2'
-                        color='error'
-                        fontWeight={700}
-                    >
-                        {`${formatearFecha(release_date)}`}
-                    </Typography>
-                    <Typography
-                        variant='body1'
-                        component='div'
-                        fontWeight={700}
-                    >
-                        {title}
-                    </Typography>
-                </CardContent>
+        <Grid item xs={6} sm={3} lg={2} >
+            <Card sx={{ boxShadow: 'none', borderRadius: '0' }}>
+
+                <CardActions sx={{padding: '0'}}>
+                    <Link href='#' sx={{textDecoration: 'none'}}>
+                        {poster_path && (
+                            <CardMedia
+                                component='img'
+                                alt={`Imagen de la pelicula ${title}`}
+                                image={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                            />
+                        )}
+
+                        <CardContent sx={{ backgroundColor: '#141a32', color: 'white' }}>
+                            <Typography
+                                variant='body2'
+                                color='error'
+                                fontWeight={700}
+                            >
+                                {`${formatearFecha(release_date)}`}
+                            </Typography>
+                            <Typography
+                                variant='body1'
+                                component='div'
+                                fontWeight={700}
+                            >
+                                {title}
+                            </Typography>
+                        </CardContent>
+                    </Link>
+                </CardActions>
             </Card>
 
         </Grid>
