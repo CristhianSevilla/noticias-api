@@ -10,7 +10,6 @@ const ListadoNoticias = () => {
 
     const totalPaginas = totalPeliculas => {
         const paginas = Math.ceil(totalPeliculas / 20)
-        console.log(paginas);
         return paginas
     }
 

@@ -1,8 +1,7 @@
-import { Container, Grid, Typography, CssBaseline, GlobalStyles, createTheme, ThemeProvider } from '@mui/material';
+import { ThemeProvider, Container, Grid, Typography, CssBaseline, GlobalStyles, createTheme } from '@mui/material';
 import Formulario from './components/Formulario';
 import ListadoNoticias from './components/ListadoNoticias';
 import { NoticiasProvider } from './context/NoticiasProvider';
-
 
 
 function App() {
@@ -29,8 +28,8 @@ function App() {
 
   return (
     <>
-      <CssBaseline />
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         {<NoticiasProvider>
           <Container>
             <header>
@@ -56,7 +55,6 @@ function App() {
             </Grid>
 
             <ListadoNoticias />
-
 
           </Container>
         </NoticiasProvider>}

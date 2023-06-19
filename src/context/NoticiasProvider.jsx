@@ -52,6 +52,16 @@ const NoticiasProvider = ({ children }) => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    function formatearFecha(fecha) {
+        const fechaFormateada = new Date(fecha).toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+        });
+
+        return fechaFormateada;
+    }
+
     return (
         <NoticiasContext.Provider
             value={{
@@ -60,7 +70,8 @@ const NoticiasProvider = ({ children }) => {
                 noticias,
                 totalPeliculas,
                 handleCHangePagina,
-                pagina
+                pagina,
+                formatearFecha
 
             }}
         >
