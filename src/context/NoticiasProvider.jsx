@@ -35,7 +35,7 @@ const NoticiasProvider = ({ children }) => {
     useEffect(() => {
         const consultarAPI = async () => {
 
-            const url = `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&with_genres=${categoria}&language=es&page=${pagina}`;
+            const url = `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.production.VITE_API_KEY}&with_genres=${categoria}&language=es&page=${pagina}`;
 
             const { data } = await axios(url)
 
