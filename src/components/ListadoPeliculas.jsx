@@ -1,12 +1,13 @@
 import Grid from "@mui/material/Grid"
-import useNoticias from '../hooks/useNoticias'
-import Noticia from "./Noticia"
+import usePeliculas from '../hooks/usePeliculas'
+import Pelicula from "./Pelicula"
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography'
 
-const ListadoNoticias = () => {
+const ListadoPeliculas = () => {
 
-    const { noticias, totalPeliculas, handleCHangePagina, pagina } = useNoticias()
+    const { peliculas, totalPeliculas, handleCHangePagina, pagina } = usePeliculas()
 
     const totalPaginas = totalPeliculas => {
         const paginas = Math.ceil(totalPeliculas / 20)
@@ -23,14 +24,18 @@ const ListadoNoticias = () => {
                 alignItems="stretch"
             >
                 {
-                    noticias.map(noticia => (
-                        <Noticia
-                            key={noticia.id}
-                            noticia={noticia}
+                    peliculas.map(pelicula => (
+                        <Pelicula
+                            key={pelicula.id}
+                            pelicula={pelicula}
                         />
                     ))
                 }
             </Grid>
+
+            <Typography textAlign={'center'} color={'white'} marginTop={3}>
+                Páginas
+            </Typography>
 
             <Stack
                 sx={{ marginTop: 3, marginBottom: 8 }}
@@ -45,6 +50,7 @@ const ListadoNoticias = () => {
                     color="primary"
                     onChange={handleCHangePagina}
                     page={pagina}
+                    siblingCount={0}
                     sx={{
                         '& .MuiPaginationItem-root': {
                             color: 'white',
@@ -56,4 +62,4 @@ const ListadoNoticias = () => {
     )
 }
 
-export default ListadoNoticias
+export default ListadoPeliculas

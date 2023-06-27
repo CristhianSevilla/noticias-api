@@ -1,12 +1,12 @@
 import { useState, useEffect, createContext } from 'react'
 import axios from 'axios'
 
-const NoticiasContext = createContext()
+const PeliculasContext = createContext()
 
-const NoticiasProvider = ({ children }) => {
+const PeliculasProvider = ({ children }) => {
 
     const [categoria, setCategoria] = useState(12)
-    const [noticias, setNoticias] = useState([])
+    const [peliculas, setPeliculas] = useState([])
     const [totalPeliculas, setTotalPeliculas] = useState(1)
     const [pagina, setPagina] = useState(1)
 
@@ -23,7 +23,7 @@ const NoticiasProvider = ({ children }) => {
             const { data } = await axios(url)
 
             setTotalPeliculas(data.total_pages);
-            setNoticias(data.results)
+            setPeliculas(data.results)
             setPagina(1)
         }
 
@@ -35,12 +35,12 @@ const NoticiasProvider = ({ children }) => {
     useEffect(() => {
         const consultarAPI = async () => {
 
-            const url = `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.production.VITE_API_KEY}&with_genres=${categoria}&language=es&page=${pagina}`;
+            const url = `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&with_genres=${categoria}&language=es&page=${pagina}`;
 
             const { data } = await axios(url)
 
             setTotalPeliculas(data.total_pages);
-            setNoticias(data.results)
+            setPeliculas(data.results)
         }
 
         consultarAPI()
@@ -63,25 +63,24 @@ const NoticiasProvider = ({ children }) => {
     }
 
     return (
-        <NoticiasContext.Provider
+        <PeliculasContext.Provider
             value={{
                 categoria,
                 handleChangeCategoria,
-                noticias,
+                peliculas,
                 totalPeliculas,
                 handleCHangePagina,
                 pagina,
                 formatearFecha
-
             }}
         >
             {children}
-        </NoticiasContext.Provider>
+        </PeliculasContext.Provider>
     )
 }
 
 export {
-    NoticiasProvider
+    PeliculasProvider
 }
 
-export default NoticiasContext
+export default PeliculasContext

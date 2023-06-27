@@ -1,7 +1,7 @@
 import { ThemeProvider, Container, Grid, Typography, CssBaseline, GlobalStyles, createTheme } from '@mui/material';
 import Formulario from './components/Formulario';
-import ListadoNoticias from './components/ListadoNoticias';
-import { NoticiasProvider } from './context/NoticiasProvider';
+import ListadoPeliculas from './components/ListadoPeliculas';
+import { PeliculasProvider } from './context/PeliculasProvider';
 
 
 function App() {
@@ -30,11 +30,11 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {<NoticiasProvider>
+        {<PeliculasProvider>
           <Container>
             <header>
               <Typography textTransform={'capitalize'} align='center' marginY={5} component="h1" variant='h3' color='primary' >
-                Buscar peliculas
+                Buscar películas
               </Typography>
             </header>
 
@@ -54,10 +54,10 @@ function App() {
               </Grid>
             </Grid>
 
-            <ListadoNoticias />
+            <ListadoPeliculas/>
 
           </Container>
-        </NoticiasProvider>}
+        </PeliculasProvider>}
         <GlobalStyles styles={{
           'body': {
             backgroundColor: '#141a32',

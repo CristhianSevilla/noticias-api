@@ -1,10 +1,10 @@
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material'
-import useNoticias from '../hooks/useNoticias'
+import usePeliculas from '../hooks/usePeliculas'
 import CATEGORIAS from '../Data'
 
 const Formulario = () => {
 
-    const { categoria, handleChangeCategoria } = useNoticias()
+    const { categoria, handleChangeCategoria } = usePeliculas()
 
     return (
         <form>

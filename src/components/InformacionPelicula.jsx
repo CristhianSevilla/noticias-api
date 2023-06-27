@@ -10,8 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import useNoticias from '../hooks/useNoticias';
-import ChecklistIcon from '@mui/icons-material/Checklist';
+import usePeliculas from '../hooks/usePeliculas';
 import CATEGORIAS from '../Data'
 
 const ExpandMore = styled((props) => {
@@ -25,9 +24,7 @@ const ExpandMore = styled((props) => {
     }),
 }));
 
-const InformacionPelicula = ({ noticia }) => {
-
-    console.log(noticia);
+const InformacionPelicula = ({ pelicula }) => {
 
     const [expanded, setExpanded] = React.useState(false);
 
@@ -35,9 +32,9 @@ const InformacionPelicula = ({ noticia }) => {
         setExpanded(!expanded);
     };
 
-    const { formatearFecha } = useNoticias()
+    const { formatearFecha } = usePeliculas()
 
-    const { backdrop_path, vote_average, vote_count, overview, title, release_date, genre_ids } = noticia
+    const { backdrop_path, vote_average, vote_count, overview, title, release_date, genre_ids } = pelicula
 
     const categorias = CATEGORIAS.reduce((resultado, categoria) => {
         if (genre_ids.includes(categoria.id)) {

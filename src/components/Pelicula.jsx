@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import InformacionPelicula from './InformacionPelicula';
-import useNoticias from '../hooks/useNoticias';
+import usePeliculas from '../hooks/usePeliculas';
 
 const style = {
     position: 'absolute',
@@ -20,13 +20,13 @@ const style = {
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
-    p: 4,
+    p: 4
 };
 
-const Noticia = ({ noticia }) => {
+const Pelicula = ({ pelicula }) => {
 
-    const { poster_path, title, release_date } = noticia
-    const {formatearFecha} = useNoticias()
+    const { poster_path, title, release_date } = pelicula
+    const {formatearFecha} = usePeliculas()
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -75,7 +75,7 @@ const Noticia = ({ noticia }) => {
             >
                 <Box sx={style}>
                     <InformacionPelicula
-                        noticia={noticia}
+                        pelicula={pelicula}
                     />
                 </Box>
             </Modal>
@@ -83,4 +83,4 @@ const Noticia = ({ noticia }) => {
     )
 }
 
-export default Noticia
+export default Pelicula
